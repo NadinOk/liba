@@ -1,4 +1,4 @@
-#include <stdlib.h>
+#include "../inc/header.h"
 
 void mx_strdel(char **str){
   if(str && *str){ 

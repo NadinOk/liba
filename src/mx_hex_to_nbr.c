@@ -1,3 +1,5 @@
+#include "../inc/header.h"
+
 unsigned long mx_hex_to_nbr(const char *hex) {
 unsigned long  res = 0;
 unsigned long i = 1;

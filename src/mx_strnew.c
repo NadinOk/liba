@@ -1,4 +1,4 @@
-#include <stdlib.h>
+#include "../inc/header.h"
 
 char *mx_strnew(const int size) {
 	char *i;

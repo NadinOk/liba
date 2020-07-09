@@ -1,3 +1,4 @@
+#include "../inc/header.h"
 
 extern int mx_strlen(const char *s);
 extern int mx_strncmp(const char *s1, const char *s2, int n);

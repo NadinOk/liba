@@ -1,4 +1,4 @@
-#include <math.h>
+#include "../inc/header.h"
 
 double mx_pow(double n, unsigned int pow) {
     double tmp = 1;
@@ -8,8 +8,4 @@ double mx_pow(double n, unsigned int pow) {
     tmp *= n;
     }
     return tmp;
-}
-int main() {
-	printf("%f\n",mx_pow(3, 3));
-	return 0;
 }

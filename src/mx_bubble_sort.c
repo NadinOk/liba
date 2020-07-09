@@ -1,4 +1,4 @@
-#include <stdlib.h>
+#include "../inc/header.h"
 
 int mx_strcmp(const char *s1, const char *s2);
 

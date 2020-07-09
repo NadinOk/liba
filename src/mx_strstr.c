@@ -1,3 +1,6 @@
+#include "../inc/header.h"
+
+
 int mx_strlen(const char *s);
 int mx_strncmp(const char *s1, const char *s2, int n);
 

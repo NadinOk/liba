@@ -1,4 +1,4 @@
-//#include <stdio.h>
+#include "../inc/header.h"
 
 char *mx_strncpy(char*dst, const char *src, int len) {
   
