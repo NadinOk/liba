@@ -1,11 +1,13 @@
 #include "../inc/header.h"
 
 char *mx_strnew(const int size) {
-	char *i;
-	i = (char *) malloc(size * sizeof(char) + 1);
-	
-	if (i == NULL) {
-		return 0;
+	char *str = (char *) malloc(size + 1);
+	if (str == NULL) {
+		return NULL;
 	}
-	return i;
+	for (int j = 0; j < size; j++) {
+		str[j] = '\0';
+	}
+	str[size] = '\0';
+	return str;
 }

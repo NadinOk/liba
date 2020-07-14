@@ -14,16 +14,18 @@ int mx_binary_search(char **arr, int size, const char *s, int *count) {
 		for(j = 0; l <= r; j++) {
 			i = (l +r) / 2;
 			(*count)++;
-			if(mx_strcmp(arr[j], s) > 0) {
-				r = j -1;
-			}
-			else if(mx_strcmp(arr[j], s) == 0) {
+			if(mx_strcmp(arr[i], s) == 0) {
 				(*count)++;
-				return j;
+				return i;
+			}
+			else if(mx_strcmp(arr[i], s) > 0) {
+				r = i - 1;
+				
 			} else {
-				l = j +1;
+				l = i +1;
 			}
 		}
 		*count = 0;
 		return -1;
 	}
+
