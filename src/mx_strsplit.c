@@ -1,36 +1,35 @@
 #include  "../inc/header.h"
 
-char **mx_strsplit(const char *s, char c) {
-    char i = NULL;
-    char** result    = 0;
-    char* tmp        = (char *) s;
-    char* last_comma = 0;
-    char delim[2];
-    delim[0] = c;
-    delim[1] = 0;
-   
-    while (*tmp)
-    {
-        if (c == *tmp)
-        {
-            i++;
-            last_comma = tmp;
+int mx_count_words(const char *str, char delimiter);
+char *mx_strnew(const int size);
+char *mx_strncpy(char*dst, const char *src, int len);
+int mx_strlen(const char *s);
+
+char mx_strsplit(char const *s, char c) {
+    int str = mx_count_words(s, c);
+    char *result = mx_strnew(mx_strlen(result)); 
+    //result[strnew ] = 0;
+    if (s == 0)
+        return 0;
+    for (int p = 0; p < str; p++) {
+        while (*s == c) {
+            s++;
         }
-        tmp++;
+        char *i = (char *) s;
+        int j = 0;
+        while (*s != c) {
+            j++;
+        }
+        char *x = mx_strnew(j);
+        mx_strncpy(x, i, j);
+        result[p] = *x;     
     }
-    i += last_comma < (s + mx_strlen(s) - 1);
-
-    i++;
-
-    result = malloc(sizeof(char*) * i);
-    result = i;
-    free(*result);
-    return result;
+   free(result);
+    return *result;
 }
-
-int main () {
-char *arr[] = "Hello world and Nadin";
-char c = '*';
-printf("s\n", mx_strsplit(*arr, &c));
-return 0;
+int main( void ) {
+  char j[23] =  "qwerty:asdfgh::zxcvbn";
+  char i = '*';
+  printf("%c\n", mx_strsplit( j, i));
+  return 0;
 }
