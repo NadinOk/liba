@@ -8,8 +8,7 @@
 #include <ctype.h>
 #include <math.h>
 
-void mx_del_strarr(char ***arr);
-char * mx_strtrim(const char * s);
+int mx_int_len(unsigned int n);
 bool mx_isspace(char c);
 void mx_printstr(const char *s);
 int mx_strlen(const char *s);

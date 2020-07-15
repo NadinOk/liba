@@ -1,13 +1,21 @@
+
 #include "../inc/header.h"
 
 
 int mx_count_words(const char *str, char delimiter);
 char *mx_strnew(const int size);
-char *mx_strncpy(char*dst, const char *src, int len);
+//char *mx_strncpy(char*dst, const char *src, int len);
 
 char **mx_strsplit(char const *s, char c) {
+    int d = 0;
+    int count = 0;
     int strnew = mx_count_words(s, c);
-    char **result = (char **) malloc(sizeof(char **) * (result+ 1)); 
+    for (; s[d] != '\0'; d++) {
+        if(s[d] == c && s[d] + 1 != c && s[d] + 1 != '\0') {
+            count ++;
+        }
+    }
+    char **result = (char **) malloc(count * sizeof(char **)) ; 
     //result[strnew ] = 0;
     if (s == 0)
         return 0;
@@ -22,10 +30,9 @@ char **mx_strsplit(char const *s, char c) {
             s++;
         }
         char *x = mx_strnew(j);
-        mx_strncpy(x, i, j);
-        result[p] = x;
+        result[p] = mx_strncpy(x, i, j);
+        //result[p] = x;
     }
-   free(result);
     return result;
 }
 int main( void ) {
@@ -41,3 +48,4 @@ int main( void ) {
 	}
 	return 0;
 }
+

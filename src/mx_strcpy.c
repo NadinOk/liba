@@ -1,12 +1,14 @@
 #include "../inc/header.h"
 
 char *mx_strcpy(char *dst, const char *src) {
-	int i = 0;
+
+char *i = dst;
+const char *j = src;
 	
-		while (src[i]) {
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-		return dst;	
+	while (*j != '\0') {
+		*i = *j;
+		i++;
+		j++;
 	}
+return dst;	
+}

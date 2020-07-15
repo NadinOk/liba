@@ -1,7 +1,8 @@
 #include "../inc/header.h"
 
-
-
+bool mx_isspace(char c);
+int mx_strlen(const char *s);
+char *mx_strnew(const int size) ;
 char *del_extra_spaces(const char *str) {
     char *strn = mx_strnew(mx_strlen(str));
     // char *res;

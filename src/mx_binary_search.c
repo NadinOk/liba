@@ -15,7 +15,6 @@ int mx_binary_search(char **arr, int size, const char *s, int *count) {
 			i = (l +r) / 2;
 			(*count)++;
 			if(mx_strcmp(arr[i], s) == 0) {
-				(*count)++;
 				return i;
 			}
 			else if(mx_strcmp(arr[i], s) > 0) {
@@ -28,4 +27,3 @@ int mx_binary_search(char **arr, int size, const char *s, int *count) {
 		*count = 0;
 		return -1;
 	}
-
