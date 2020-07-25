@@ -1,7 +1,8 @@
-#include "../inc/header.h"
+#include "../inc/libmx.h"
 
-bool mx_isspace(char c){
-  if((c >= 9 && c < 13) || (c == 32)){
+bool mx_isspace(int sym){
+  
+  if(sym == ' ' || sym == '\t' || sym == '\n' || sym == '\v' || sym == '\f' || sym == '\r'){
     return 1;
   }
   else{

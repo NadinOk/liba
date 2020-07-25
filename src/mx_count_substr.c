@@ -1,22 +1,30 @@
-#include "../inc/header.h"
-
-extern int mx_strlen(const char *s);
-extern int mx_strncmp(const char *s1, const char *s2, int n);
-extern char *mx_strstr(const char *s1, const char *s2);
-extern char *mx_strchr(const char *s, int c);
+#include "../inc/libmx.h"
 
 int mx_count_substr(const char *str, const char *sub) {
+	 int count = 0;
+	 int i = 0;
+	int j = 0;
+	
+	
+	if (str == NULL || sub == NULL) {
+        return -1;
+	}
 	if (mx_strlen(sub) == 0){
-		return 0;
-	}
-
-	int count = 0;
-	const char *p = mx_strstr(str, sub);
-
-	while(p != 0){
-		p = mx_strstr(p+1, sub);
-		count++;
-	}
-
-	return count;
+			return 0;
+		}
+		 for (; i < mx_strlen(str); i++){
+			if (str[i] == sub[0])
+        {
+            count++;
+            for (; j < mx_strlen(sub); j++)
+            {
+                if (str[i + j] != sub[j])
+                {
+                    count--;
+                    break;
+                }
+            }
+        }
+    }
+    return count;
 }

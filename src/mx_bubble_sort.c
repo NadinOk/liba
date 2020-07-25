@@ -1,6 +1,4 @@
-#include "../inc/header.h"
-
-int mx_strcmp(const char *s1, const char *s2);
+#include "../inc/libmx.h"
 
 int mx_bubble_sort(char **arr, int size) {
 char *b = NULL;

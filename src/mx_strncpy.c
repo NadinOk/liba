@@ -1,4 +1,4 @@
-#include "../inc/header.h"
+#include "../inc/libmx.h"
 
 char *mx_strncpy(char*dst, const char *src, int len) {
   
@@ -11,11 +11,3 @@ char *mx_strncpy(char*dst, const char *src, int len) {
         *dst++ = 0;
     return ret;
 }
-
-
-//int main () {
-  //char i[6];
-  //char *j = mx_strncpy(i, "nadin", 6);
-  //printf("%s\n", j);
-  //return 0;
-//}

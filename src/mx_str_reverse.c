@@ -1,7 +1,4 @@
-#include "../inc/header.h"
-
-int mx_strlen(const char *s);
-void mx_swap_char(char *s1, char *s2);
+#include "../inc/libmx.h"
 
 void mx_str_reverse(char *s) {
   int start = 0;

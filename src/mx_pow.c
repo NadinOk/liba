@@ -1,4 +1,4 @@
-#include "../inc/header.h"
+#include "../inc/libmx.h"
 
 double mx_pow(double n, unsigned int pow) {
     double tmp = 1;

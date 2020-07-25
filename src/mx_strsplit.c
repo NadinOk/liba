@@ -1,49 +1,44 @@
-#include "../inc/header.h"
+#include "../inc/libmx.h"
 
+static  char  *mx_word(const char *str, char c, int *i) {
+  char  *s;
+  int   k;
 
-int mx_count_words(const char *str, char delimiter);
-char *mx_strnew(const int size);
-//char *mx_strncpy(char*dst, const char *src, int len);
-
-char **mx_strsplit(char const *s, char c) {
-    int d = 0;
-    int count = 0;
-    int strnew = mx_count_words(s, c);
-    for (; s[d] != '\0'; d++) {
-        if(s[d] == c && s[d] + 1 != c && s[d] + 1 != '\0') {
-            count ++;
-        }
-    }
-    char **result = (char **) malloc(count * sizeof(char **)) ; 
-    //result[strnew ] = 0;
-    if (s == 0)
-        return 0;
-    for (int p = 0; p < strnew; p++) {
-        while (*s == c) {
-            s++;
-        }
-        char *i = (char *) s;
-        int j = 0;
-        while (*s != c) {
-            j++;
-            s++;
-        }
-        char *x = mx_strnew(j);
-        result[p] = mx_strncpy(x, i, j);
-        //result[p] = x;
-    }
-    return result;
+  if (!(s = (char *)malloc(sizeof(s) * (mx_strlen(str)))))
+    return (NULL);
+  k = 0;
+  while (str[*i] != c && str[*i])
+  {
+    s[k] = str[*i];
+    k++;
+    *i += 1;
+  }
+  s[k] = '\0';
+  while (str[*i] == c && str[*i])
+    *i += 1;
+  return (s);
 }
-int main( void ) {
-	char* arr = *mx_strsplit( "qwerty:asdfgh::zxcvbn", '*' );
 
-	if ( arr ) {
-		printf( "%c\n", arr[ 0 ] ); // "qwerty"
-		printf( "%c\n", arr[ 1 ] ); // "asdfgh"
-		printf( "%c\n", arr[ 2 ] ); // ""
-		printf( "%c\n", arr[ 3 ] ); // "zxcvbn"
-		printf( "%c\n", arr[ 4 ] ); // NULL
-		free( arr );
-	}
-	return 0;
+char **mx_strsplit(char const *str, char c) {
+
+  int   i;
+  int   j;
+  int   wrd;
+  char  **s;
+
+  i = 0;
+  j = 0;
+  wrd = mx_count_words(str, c);
+  
+    if (!(s = (char **)malloc(sizeof(s) * (mx_count_words(str, c) + 2))))
+        return (NULL);
+     while (str[i] == c && str[i])
+        i++;
+      while (j < wrd && str[i])
+      {
+      s[j] = mx_word(str, c, &i);
+      j++;
+      }
+     s[j] = NULL;
+  return (s);
 }

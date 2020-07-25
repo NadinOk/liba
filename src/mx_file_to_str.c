@@ -1,22 +1,20 @@
-#include "../inc/header.h"
+#include "../inc/libmx.h"
 
-char *mx_strjoin(char const *s1, char const *s2);
-char *mx_strnew(const int size);
+char *mx_file_to_str(const char *file) {
 
-char *mx_file_to_str(const char *filename) {
-  int i = open(filename, O_RDWR);
-  if (i < 0) {
-    return NULL;
-  }
-  int b;
-  char *tmp = (char *)malloc(sizeof(i));
-  char *buf = (char *)malloc(sizeof(char) * 2);
-  while ((b = read(i, buf, 1)) > 0) {
-    buf[1] = '\0';
-    tmp = mx_strjoin(tmp, buf);
-  }
-  tmp = mx_strjoin(tmp, "\0");
-  free(buf);
-  close(i);
-  return tmp;
+    int fread = open(file, O_RDONLY);
+    if (fread < 0) { 
+        return NULL;
+    }
+    char *str = (char *)malloc(sizeof(fread));
+    char *buff = (char *)malloc(sizeof(char) * 2); 
+    int bytes;
+    while ((bytes = read(fread, buff, 1)) > 0) {
+        buff[mx_strlen(buff)] = '\0';
+        str = mx_strjoin(str,buff);
+    }
+    str = mx_strjoin(str, "\0");
+    free(buff);
+    close(fread);
+    return str;   
 }

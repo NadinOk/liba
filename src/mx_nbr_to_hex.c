@@ -1,14 +1,13 @@
-#include "../inc/header.h"
+#include "../inc/libmx.h"
 
-char *mx_strnew(const int size);
 char *mx_nbr_to_hex(unsigned long nbr){
-  int n = 1;
+  unsigned int n = 1;
   unsigned int tmp = nbr;
   char *res = mx_strnew(n); 
   int i;
-  while(tmp > 0) {
-    tmp /= 16;
+  while(tmp / 16) {
     n++;
+    tmp /= 16;
   }
   for(i = n -1; i >= 0; i--){
     if((nbr % 16 >= 10 && nbr % 16 <= 15)){
@@ -21,3 +20,4 @@ char *mx_nbr_to_hex(unsigned long nbr){
   }
   return res;
 }
+

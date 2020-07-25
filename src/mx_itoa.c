@@ -1,12 +1,14 @@
-#include "../inc/header.h"
+#include "../inc/libmx.h"
 
-char *mx_strnew(const int size);
-int mx_int_len(unsigned int n);
 
 char * mx_itoa(int number) {
     int length = 0, sign = 0, p = 1, i = 0;
     if (number < 0) {
+      if(number == -2147483648) {
+        return "-2147483648";
+      }
         sign = 1;
+        length++;
         number *= -1;
     }
     char *s = mx_strnew(mx_int_len(number) + sign + 1);
@@ -29,11 +31,3 @@ char * mx_itoa(int number) {
     s[length] = '\0';
     return s;
 }
-/*int main() {
-     char *s = NULL;
-     //s = mx_itoa(-2147483647);
-     s = mx_itoa(100);
-     printf("%s\n", s);
-     free(s);
-     return 0;
-}/*

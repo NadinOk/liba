@@ -1,4 +1,4 @@
-#include "../inc/header.h"
+#include "../inc/libmx.h"
 
 t_list *mx_create_node(void *data){
   

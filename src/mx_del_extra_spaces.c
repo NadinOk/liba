@@ -1,38 +1,31 @@
-#include "../inc/header.h"
+#include "../inc/libmx.h"
 
-bool mx_isspace(char c);
-int mx_strlen(const char *s);
-char *mx_strnew(const int size) ;
-char *del_extra_spaces(const char *str) {
-    char *strn = mx_strnew(mx_strlen(str));
-    // char *res;
-    int i = 0;
-    int j = 0;
+char *mx_del_extra_spaces(const char *str) {
+    
+   if (!str)
+        return NULL;
 
-      for(; str[i]; i++) {
-        if (!mx_isspace(str[i]) && mx_isspace(str[i +1])) {
-          strn[j] = ' ';
-          j++;
-          // write(1, &str[i], 1);
+    unsigned int str_len = mx_strlen(str);
+    char* temp_str = mx_strnew(str_len);
+    unsigned int k = 0;
+
+    for (unsigned int i = 0; i < str_len; i++)
+    {
+        if (!mx_isspace(str[i]))
+        {
+            temp_str[k] = str[i];
+            k++;
         }
-        else if(!mx_isspace(str[i])) {
-          strn[j] = str[i];
-          j++;
-          // write(1, &str[i], 1);
+        if (!mx_isspace(str[i]) && mx_isspace(str[i + 1]))
+        {
+            temp_str[k] = ' ';
+            k++;
         }
-        
-      }
-      // res = mx_strtrim(strn);
-      // free(strn);
-      // if (res == NULL) {
-        // return mx_strnew(0);
-    return strn;
-  }
+    }
 
-
-int main() {
-  char str[] = "  If  you  gaze   into  the abyss,    the   abyss gazes also   into you.    ";
-  char *tmp = del_extra_spaces(str);
-  printf("%s\n", tmp);
-  return 0;
+    char* new_str = mx_strtrim(temp_str);
+        free(temp_str);
+    if (new_str == NULL)
+        return NULL;
+    return new_str;
 }

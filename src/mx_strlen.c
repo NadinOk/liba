@@ -1,4 +1,4 @@
-#include "../inc/header.h"
+#include "../inc/libmx.h"
 
 int mx_strlen(const char *s){
   int i;
