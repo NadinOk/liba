@@ -1,15 +1,17 @@
 #include "../inc/libmx.h"
 
 int mx_quicksort(char **arr, int left, int right) {
+  
+    if (!arr) {
+        return -1;
+    }
+
   char *b = NULL;
   int l = left;
   int r = right;
   int res = (l + r) / 2;
   unsigned int count = 0;
-    
-    if (!arr) {
-        return -1;
-    }
+  
   while (l <= r) {
         while (mx_strlen(arr[l]) < mx_strlen(arr[res])) {
             l++;

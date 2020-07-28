@@ -4,12 +4,11 @@ void mx_push_back(t_list **list, void *data) {
   	t_list *point = *list;
   
   		if (point == NULL) {
-    		point = mx_create_node(data);
+    		*list = mx_create_node(data);
+        return;
   		} 
-  		else {
-    		while(point->next) {
+    		while(point->next != NULL) {
       			point = point->next;
     		}
     	point->next = mx_create_node(data);
-  		}
 }
